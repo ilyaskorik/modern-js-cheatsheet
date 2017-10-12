@@ -1,52 +1,52 @@
-# Modern JavaScript Cheatsheet
+# Современный JavaScript - шпаргалка
 
 ![Modern JavaScript cheatsheet](https://i.imgur.com/aexPxMb.png)
 <small>Image Credits: [Ahmad Awais ⚡️](https://github.com/ahmadawais)</small>
 
-## Introduction
+## Введение
 
-### Motivation
+### Мотивация
 
-This document is a cheatsheet for JavaScript you will frequently encounter in modern projects and most contemporary sample code.
+Этот документ представляет собой чит-лист для JavaScript, с которым вы часто сталкиваетесь в современных проектах и в большинстве современных образцов кода.
 
-This guide is not intended to teach you JavaScript from the ground up, but to help developers with basic knowledge who may struggle to get familiar with modern codebases (or let's say to learn React for instance) because of the JavaScript concepts used.
+Это руководство не предназначено для того, чтобы научить вас JavaScript с нуля, но чтобы помочь разработчикам с базовыми знаниями, которые могут пытаться познакомиться с современными кодами (или, скажем, изучить React, например) из-за используемых концепций JavaScript.
 
-Besides, I will sometimes provide personal tips that may be debatable but will take care to mention that it's a personal recommendation when I do so.
+Кроме того, я иногда предоставляю личные советы, которые могут быть спорными, но позаботимся о том, чтобы это было личной рекомендацией, когда я это делаю.
 
-> **Note:** Most of the concepts introduced here are coming from a JavaScript language update (ES2015, often called ES6). You can find new features added by this update [here](http://es6-features.org); it's very well done.
+> **Примечание:** Большинство представленных здесь понятий исходят из обновления языка JavaScript (ES2015, часто называемого ES6). Вы можете найти новые функции, добавленные этим обновлением [здесь](http://es6-features.org); это очень хорошо сделано.
 
-### Complementary Resources
+### Дополнительные ресурсы
 
-When you struggle to understand a notion, I suggest you look for answers on the following resources:
+Когда вы пытаетесь понять понятие, я предлагаю вам найти ответы на следующие ресурсы:
 
 - [MDN (Mozilla Developer Network)](https://developer.mozilla.org/en-US/search?q=)
 - [You don't know JS (book)](https://github.com/getify/You-Dont-Know-JS)
 - [ES6 Features with examples](http://es6-features.org)
 - [WesBos blog (ES6)](http://wesbos.com/category/es6/)
-- [Javascript Basics for Beginners](https://www.udacity.com/course/javascript-basics--ud804) - a free Udacity course
+- [Javascript Basics for Beginners](https://www.udacity.com/course/javascript-basics--ud804) - бесплатный курс Udacity
 - [Reddit (JavaScript)](https://www.reddit.com/r/javascript/)
-- [Google](https://www.google.com/) to find specific blog and resources
+- [Google](https://www.google.com/) найти определенный блог и ресурсы
 - [StackOverflow](https://stackoverflow.com/questions/tagged/javascript)
 
-## Table of Contents
+## Содержание
 
-- [Modern JavaScript cheatsheet](#modern-javascript-cheatsheet)
-  * [Introduction](#introduction)
-    + [Motivation](#motivation)
-    + [Complementary resources](#complementary-resources)
-  * [Table of contents](#table-of-contents)
-  * [Notions](#notions)
-    + [Variable declaration: var, const, let](#variable-declaration-var-const-let)
-      - [Short explanation](#short-explanation)
-      - [Sample code](#sample-code)
-      - [Detailed explanation](#detailed-explanation)
-      - [External resource](#external-resource)
-    + [Arrow function](#-arrow-function)
-      - [Sample code](#sample-code-1)
-      - [Detailed explanation](#detailed-explanation-1)
-        * [Concision](#concision)
-        * [*this* reference](#this-reference)
-      - [Useful resources](#useful-resources)
+- [Современный JavaScript - шпаргалка](#modern-javascript-cheatsheet)
+  * [Введение](#introduction)
+    + [Мотивация](#motivation)
+    + [Дополнительные ресурсы](#complementary-resources)
+  * [Содержание](#table-of-contents)
+  * [Понятия](#notions)
+    + [Объявление переменной: var, const, let](#variable-declaration-var-const-let)
+      - [Краткое объяснение](#short-explanation)
+      - [Пример кода](#sample-code)
+      - [Детальное объяснение](#detailed-explanation)
+      - [Внешний ресурс](#external-resource)
+    + [Стрелочная функция, Arrow function](#-arrow-function)
+      - [Образец кода](#sample-code-1)
+      - [Детальное объяснение](#detailed-explanation-1)
+        * [Краткость](#concision)
+        * [*this* ссылка](#this-reference)
+      - [Полезные ресурсы](#useful-resources)
     + [Function default parameter value](#function-default-parameter-value)
       - [External resource](#external-resource-1)
     + [Destructuring objects and arrays](#destructuring-objects-and-arrays)
