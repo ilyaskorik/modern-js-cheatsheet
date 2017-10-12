@@ -7,17 +7,17 @@
 
 ### Мотивация
 
-Этот документ представляет собой чит-лист для JavaScript, с которым вы часто сталкиваетесь в современных проектах и в большинстве современных образцов кода.
+Этот документ представляет собой чит-лист по современному JavaScript, с которым вы часто сталкиваетесь в современных проектах и в большинстве современных образцов кода.
 
-Это руководство не предназначено для того, чтобы научить вас JavaScript с нуля, но чтобы помочь разработчикам с базовыми знаниями, которые могут пытаться познакомиться с современными кодами (или, скажем, изучить React, например) из-за используемых концепций JavaScript.
+Это руководство не предназначено для обучения JavaScript с нуля, но может быть полезно разработчикам с базовыми знаниями, которые пытаются разобраться с современным кодом (или, скажем, изучить React, например) в котором используются новые концепции JavaScript.
 
-Кроме того, я иногда предоставляю личные советы, которые могут быть спорными, но позаботимся о том, чтобы это было личной рекомендацией, когда я это делаю.
+Кроме того, я иногда предоставляю личные советы, которые могут быть спорными, но договоримся о том, чтобы это будут личное мнение, когда я это делаю.
 
 > **Примечание:** Большинство представленных здесь понятий исходят из обновления языка JavaScript (ES2015, часто называемого ES6). Вы можете найти новые функции, добавленные этим обновлением [здесь](http://es6-features.org); это очень хорошо сделано.
 
 ### Дополнительные ресурсы
 
-Когда вы пытаетесь понять понятие, я предлагаю вам найти ответы на следующие ресурсы:
+Когда вы необходимо получить более углубленную информацию, я предлагаю вам найти полные ответы на следующих ресурсах:
 
 - [MDN (Mozilla Developer Network)](https://developer.mozilla.org/en-US/search?q=)
 - [You don't know JS (book)](https://github.com/getify/You-Dont-Know-JS)
@@ -25,7 +25,7 @@
 - [WesBos blog (ES6)](http://wesbos.com/category/es6/)
 - [Javascript Basics for Beginners](https://www.udacity.com/course/javascript-basics--ud804) - бесплатный курс Udacity
 - [Reddit (JavaScript)](https://www.reddit.com/r/javascript/)
-- [Google](https://www.google.com/) найти определенный блог и ресурсы
+- [Google](https://www.google.com/) поиск по специфичным блогам и ресурсам
 - [StackOverflow](https://stackoverflow.com/questions/tagged/javascript)
 
 ## Содержание
@@ -107,81 +107,81 @@
     + [Scope](#-scope)
     + [Variable mutation](#-variable-mutation)
 
-## Notions
+## Понятия
 
-### Variable declaration: var, const, let
+### Объявление переменной: var, const, let
 
-In JavaScript, there are three keywords available to declare a variable, and each has its differences. Those are ```var```, ```let``` and ```const```.
+В JavaScript есть три ключевых слова для объявления переменной, и каждая из них имеет свои отличия. Это ```var```, ```let``` and ```const```.
 
 #### Short explanation
 
-Variables declared with ```const``` keyword can't be reassigned, while ```let``` and ```var``` can.
+Переменные, объявленные с ключевым словом ```const```, не могут быть переназначены, тогда как ```let``` и ```var``` могут. 
 
-I recommend always declaring your variables with ```const``` by default, and with ```let``` if you need to *mutate* it or reassign it later.
+Я рекомендую всегда объявлять ваши переменные с ```const``` по умолчанию и  ```let```, если вам нужно *mutate* переменную или переназначить её позже.
 
 <table>
   <tr>
     <th></th>
-    <th>Scope</th>
-    <th>Reassignable</th>
-    <th>Mutable</th>
-   <th><a href="#tdz_sample">Temporal Dead Zone</a></th>
+    <th>Видимость (Scope)</th>
+    <th>Переназначаемая (Reassignable)</th>
+    <th>Мутабельная (Mutable)</th>
+   <th><a href="#tdz_sample">Временная мертвая зона</a></th>
   </tr>
   <tr>
     <th>const</th>
     <td>Block</td>
-    <td>No</td>
-    <td><a href="#const_mutable_sample">Yes</a></td>
-    <td>Yes</td>
+    <td>Нет</td>
+    <td><a href="#const_mutable_sample">Да</a></td>
+    <td>Да</td>
   </tr>
   <tr>
     <th>let</th>
     <td>Block</td>
-    <td>Yes</td>
-    <td>Yes</td>
-    <td>Yes</td>
+    <td>Да</td>
+    <td>Да</td>
+    <td>Да</td>
   </tr>
    <tr>
     <th>var</th>
     <td>Function</td>
-    <td>Yes</td>
-    <td>Yes</td>
-    <td>No</td>
+    <td>Да</td>
+    <td>Да</td>
+    <td>Нет</td>
   </tr>
 </table>
 
-#### Sample code
+#### Пример кода
 
 ```javascript
 const person = "Nick";
-person = "John" // Will raise an error, person can't be reassigned
+person = "John" // Возникнет ошибка, person не может быть переназначен
 ```
 
 ```javascript
 let person = "Nick";
 person = "John";
-console.log(person) // "John", reassignment is allowed with let
+console.log(person) // "John", переназначение разрешено с let
 ```
 
-#### Detailed explanation
+#### Подробное пояснение
 
-The [*scope*](#scope_def) of a variable roughly means "where is this variable available in the code".
+Область [*scope*](#scope_def) переменной означает «где эта переменная доступна в коде»
 
 ##### var
 
-```var``` declared variables are *function scoped*, meaning that when a variable is created in a function, everything in that function can access that variable. Besides, a *function scoped* variable created in a function can't be accessed outside this function.
+```var``` объявленные переменные: *function scoped*, означает, что когда переменная создается в функции, все в этой функции может получить доступ к этой переменной. Кроме того, переменную *function scoped*, созданную в функции, нельзя получить за пределами этой функции.
 
-I recommend you to picture it as if an *X scoped* variable meant that this variable was a property of X.
+Я рекомендую вам представить это, как если бы переменная *X scoped* означала, что эта переменная была свойством X.
 
 ```javascript
 function myFunction() {
   var myVar = "Nick";
-  console.log(myVar); // "Nick" - myVar is accessible inside the function
+  console.log(myVar); // "Nick" - myVar доступен внутри функции
 }
-console.log(myVar); // Throws a ReferenceError, myVar is not accessible outside the function.
+console.log(myVar); // Выбрасывает ReferenceError, myVar недоступен вне функции.
 ```
 
-Still focusing on the variable scope, here is a more subtle example:
+Все еще сосредоточив внимание на области видимости переменной (variable scope), вот более тонкий пример:
 
 ```javascript
 function myFunction() {
@@ -189,23 +189,22 @@ function myFunction() {
   if (true) {
     var myVar = "John";
     console.log(myVar); // "John"
-    // actually, myVar being function scoped, we just erased the previous myVar value "Nick" for "John"
+    // на самом деле, myVar, находится в области видимости функции (function scoped), мы просто заменили предыдущее значение myVar «Nick» на «John»
   }
-  console.log(myVar); // "John" - see how the instructions in the if block affected this value
+  console.log(myVar); // "John" - смотрите, как инструкции в блоке if повлияли на это значение
 }
-console.log(myVar); // Throws a ReferenceError, myVar is not accessible outside the function.
+console.log(myVar); // Выбрасывает ReferenceError, myVar недоступен вне функции
 ```
+Кроме того, объявленные как *var* переменные перемещаются в начало области видимости при выполнении. Это то, что мы называем [всплытие переменной, var hoisting](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var#var_hoisting).
 
-Besides, *var* declared variables are moved to the top of the scope at execution. This is what we call [var hoisting](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var#var_hoisting).
-
-This portion of code:
+Эта часть кода:
 
 ```js
 console.log(myVar) // undefined -- no error raised
 var myVar = 2;
 ```
 
-is understood at execution like:
+понимается при исполнении как:
 
 ```js
 var myVar;
@@ -215,13 +214,13 @@ myVar = 2;
 
 ##### let
 
-```var``` and ```let ``` are about the same, but ```let``` declared variables
+```var``` и ```let ``` примерно одинаковы, но ```let``` объявляет переменные
 
-- are *block scoped*
-- are **not** accessible before they are assigned
-- can't be re-declared in the same scope
+- является *block scoped*
+- является **не** доступной до их объявления
+- не может быть повторно объявлена в той же области видимости
 
-Let's see the impact of block-scoping taking our previous example:
+Давайте посмотрим на влияние блочной области видимости (block-scoping) на предыдущем примере:
 
 ```javascript
 function myFunction() {
@@ -229,43 +228,42 @@ function myFunction() {
   if (true) {
     let myVar = "John";
     console.log(myVar); // "John"
-    // actually, myVar being block scoped, we just created a new variable myVar.
-    // this variable is not accessible outside this block and totally independent
-    // from the first myVar created !
+    // фактически, myVar находится в блочной области видимости, мы просто создали новую переменную myVar.
+    // эта переменная недоступна вне этого блока и полностью независима от первой myVar, созданой выше!
   }
-  console.log(myVar); // "Nick", see how the instructions in the if block DID NOT affect this value
+  console.log(myVar); // "Nick", см., как инструкции в блоке if НЕ ВЛИЯЮТ на эту переменную
 }
-console.log(myVar); // Throws a ReferenceError, myVar is not accessible outside the function.
+console.log(myVar); // Выбрасывает ReferenceError, myVar недоступен вне функции.
 ```
 
-<a name="tdz_sample"></a> Now, what it means for *let* (and *const*) variables for not being accessible before being assigned:
+<a name="tdz_sample"></a> Теперь, что означает то, что переменные *let* (и *const*) не доступны до из объявления:
 
 ```js
-console.log(myVar) // raises a ReferenceError !
+console.log(myVar) // Выбрасывает ReferenceError !
 let myVar = 2;
 ```
 
-By contrast with *var* variables, if you try to read or write on a *let* or *const* variable before they are assigned an error will be raised. This phenomenon is often called [*Temporal dead zone*](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Temporal_Dead_Zone_and_errors_with_let) or *TDZ*.
+В отличие от переменных *var*, если вы попытаетесь прочитать или записать переменную *let* или *const* до того, как они будут объявлены, будет выброшена ошибка. Это явление часто называют [*Temporal dead zone*](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Temporal_Dead_Zone_and_errors_with_let) или *TDZ*.
 
-> **Note:** Technically, *let* and *const* variables declarations are being hoisted too, but not their assignation. Since they're made so that they can't be used before assignation, it intuitively feels like there is no hoisting, but there is. Find out more on this [very detailed explanation here](http://jsrocks.org/2015/01/temporal-dead-zone-tdz-demystified) if you want to know more.
+> **Примечание:** Технически, объявленные (declarated) *let* и *const* вплывают вверх области видимости, но не их значения (assignation). Внутри JS сделано так, что эти переменные нельзя использовать до назначения (assignation), они ведут себя так, будто всплытыия, но оно есть. Прочитайте этот материал [очень подробное объяснение здесь](http://jsrocks.org/2015/01/temporal-dead-zone-tdz-demystified), если вы хотите узнать больше.
 
-In addition, you can't re-declare a *let* variable:
+Кроме того, вы не можете повторно объявить переменную *let*:
 
 ```js
 let myVar = 2;
-let myVar = 3; // Raises a SyntaxError
+let myVar = 3; // Выбрасывает SyntaxError
 ```
 
 ##### const
 
-```const``` declared variables behave like *let* variables, but also they can't be reassigned.
+```const``` объявляет переменные с поведением, схожим с поведением *let*, и также не могут быть переназначены
 
-To sum it up, *const* variables:
+Подводя итог, переменные, *const*:
 
-- are *block scoped*
-- are not accessible before being assigned
-- can't be re-declared in the same scope
-- can't be reassigned
+- являются *block scoped*
+- недоступны перед назначением 
+- не могут быть повторно объявлены в той же области видимости
+- их невозможно переназначить
 
 ```js
 const myVar = "Nick";
@@ -274,30 +272,30 @@ myVar = "John" // raises an error, reassignment is not allowed
 
 ```js
 const myVar = "Nick";
-const myVar = "John" // raises an error, re-declaration is not allowed
+const myVar = "John" // вызывает ошибку, повторное объявление недопустимо
 ```
 
-<a name="const_mutable_sample"></a> But there is a subtlety : ```const``` variables are not [**immutable**](#mutation_def) ! Concretely, it means that *object* and *array* ```const``` declared variables **can** be mutated.
+<a name="const_mutable_sample"></a> But Но есть тонкость : ```const``` переменные не [**immutable**](#mutation_def) !Конкретно это означает, что *object* и *array* ```const``` объявленные переменные **могут** быть мутированными.
 
-For objects:
+Для объектов:
 ```js
 const person = {
   name: 'Nick'
 };
-person.name = 'John' // this will work ! person variable is not completely reassigned, but mutated
+person.name = 'John' // это сработает! переменная person не полностью переназначена, но мутирована
 console.log(person.name) // "John"
-person = "Sandra" // raises an error, because reassignment is not allowed with const declared variables
+person = "Sandra" // вызывает ошибку, поскольку переопределение не допускается с объявленными переменными const
 ```
 
-For arrays:
+Для массивов:
 ```js
 const person = [];
-person.push('John'); // this will work ! person variable is not completely reassigned, but mutated
+person.push('John'); // это сработает! переменная person не полностью переназначена, но мутирована
 console.log(person[0]) // "John"
-person = ["Nick"] // raises an error, because reassignment is not allowed with const declared variables
+person = ["Nick"] // вызывает ошибку, поскольку переопределение не допускается с объявленными переменными const
 ```
 
-#### External resource
+#### Дополнительная информация
 
 - [How let and const are scoped in JavaScript - WesBos](http://wesbos.com/javascript-scoping/)
 - [Temporal Dead Zone (TDZ) Demystified](http://jsrocks.org/2015/01/temporal-dead-zone-tdz-demystified)
